@@ -187,7 +187,7 @@ impl Repository {
                 &repo.find_remote("origin").unwrap(),
             )
             .map_err(Error::from_tame)?;
-        } else {
+        } else if ensure_fresh {
             // If we didn't open a fresh repo we need to peform a fetch ourselves, and
             // do the work of updating the HEAD to point at the latest remote HEAD, which
             // gix doesn't currently do.
